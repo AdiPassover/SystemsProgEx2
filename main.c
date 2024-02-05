@@ -4,6 +4,7 @@
 int main() {
     char action;
     int matrix[MATRIX_SIZE][MATRIX_SIZE] = {0};
+   
     scanf("%c",&action);
     while (action != 'D') {
         if (action == 'A') {
