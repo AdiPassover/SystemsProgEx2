@@ -6,7 +6,7 @@ int main() {
     int matrix[MATRIX_SIZE][MATRIX_SIZE] = {0};
    
     scanf("%c",&action);
-    while (action != 'D') {
+    while (action != 'D' || action != EOF) {
         if (action == 'A') {
             getMatrix(matrix);
         }

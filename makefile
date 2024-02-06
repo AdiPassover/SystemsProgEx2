@@ -6,7 +6,7 @@ LFL = rcs
 
 all: my_graph my_Knapsack
 
-my_graph: main.o libmymat.a
+my_graph: my_graph.o libmymat.a
 	$(CC) $(CFL) $^ -o $@
 
 my_Knapsack: my_Knapsack.o
@@ -15,7 +15,7 @@ my_Knapsack: my_Knapsack.o
 my_knapsack.o: my_Knapsack.c
 	$(CC) %(CFL) -c $<
 
-main.o:main.c my_mat.h
+my_graph.o:my_graph.c my_mat.h
 	$(CC) $(CFL) -c $<
 
 libmymat.a: my_mat.o
@@ -26,6 +26,6 @@ my_mat.o: my_mat.c my_mat.h
 
 
 clean:
-	rm -f *.o *.a connections
+	rm -f *.o *.a my_graph my_Knapsack
 
 
