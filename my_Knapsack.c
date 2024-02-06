@@ -50,32 +50,24 @@ int knapSack(int weights[], int values[], int selected_bool[])
             {
                 matrix[i][j] = 0;
             }
-            else if (weights[i - 1] <= j)
+            else if (weights[i - 1] <= j) //if the choice is possible
             {
-                if (values[i - 1] + matrix[i - 1][j - weights[i - 1]] > matrix[i - 1][j])
-                    matrix[i][j] = values[i - 1] + matrix[i - 1][j - weights[i - 1]]; // make the choice
+                if (values[i - 1] + matrix[i - 1][j - weights[i - 1]] > matrix[i - 1][j]) //if the new choice is better
+                    matrix[i][j] = values[i - 1] + matrix[i - 1][j - weights[i - 1]]; //update the matrix
                 else
-                    matrix[i][j] = matrix[i - 1][j];
+                    matrix[i][j] = matrix[i - 1][j]; //keep the old choice
             }
             else
             {
-                matrix[i][j] = matrix[i - 1][j];
+                matrix[i][j] = matrix[i - 1][j]; //keep the old choice
             }
             
         }
     }
     
-    int maxInd = 0;
-    int max = 0;
-    for (size_t i = 0; i < MAXIMUM_WEIGHT + 1; i++) // traceing back to find the selected items
-    {
-        if (matrix[MAXIMUM_ITEMS][i] > max)
-        {
-            max = matrix[MAXIMUM_ITEMS][i];
-            maxInd = i;
-        }
-    }
-    for (size_t i = MAXIMUM_ITEMS; i > 0; i--)
+    int maxInd = MAXIMUM_WEIGHT; //the maximum index and value will be at the right bottom of the matrix
+    int max = matrix[MAXIMUM_ITEMS][MAXIMUM_WEIGHT];
+    for (size_t i = MAXIMUM_ITEMS; i > 0; i--) //backtrack to find the selected items
     {
         if (matrix[i][maxInd] != matrix[i - 1][maxInd])
         {

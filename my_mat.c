@@ -63,8 +63,8 @@ void floydWarshall(int matrix[MATRIX_SIZE][MATRIX_SIZE]) {
         }
     }
 
-    // Compute shortest paths
-    for (int k = 0; k < MATRIX_SIZE; k++) {
+    // Compute shortest paths using flloyd warshall algorithm
+    for (int k = 0; k < MATRIX_SIZE; k++) { 
         for (int i = 0; i < MATRIX_SIZE; i++) {
             for (int j = 0; j < MATRIX_SIZE; j++) {
                   if (distancesMatrix[i][k]!=INF&&distancesMatrix[k][j]!=INF&& distancesMatrix[i][k]+distancesMatrix[k][j] <distancesMatrix[i][j]) {
