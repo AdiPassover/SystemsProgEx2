@@ -4,10 +4,16 @@ CFL = -Wall -g
 LFL = rcs
 .PHONY: all clean
 
-all: connections
+all: my_graph my_Knapsack
 
-connections: main.o libmymat.a
+my_graph: main.o libmymat.a
 	$(CC) $(CFL) $^ -o $@
+
+my_Knapsack: my_Knapsack.o
+	$(CC) $(CFL) $^ -o $@
+
+my_knapsack.o: my_Knapsack.c
+	$(CC) %(CFL) -c $<
 
 main.o:main.c my_mat.h
 	$(CC) $(CFL) -c $<
