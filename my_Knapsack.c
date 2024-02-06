@@ -13,13 +13,13 @@ int main()
     for (size_t i = 0; i < MAXIMUM_ITEMS; i++)
     {
         scanf("%s", items[i]);
-        scanf("%d", &weights[i]);
         scanf("%d", &values[i]);
+        scanf("%d", &weights[i]);
     }
 
     int max = knapSack(weights, values, selected_bool);
     printf("Maximum profit: %d\n", max);
-    printf("Items that give the maximum profit: [\n");
+    printf("Items that give the maximum profit: [");
     int first = 1;
     for (size_t i = 0; i < MAXIMUM_ITEMS; i++)
     {
@@ -31,7 +31,7 @@ int main()
                 printf("%s", items[i]);
             }
 
-            printf(", %s", items[i]);
+            else printf(", %s", items[i]);
         }
     }
     printf("]\n");
@@ -64,14 +64,7 @@ int knapSack(int weights[], int values[], int selected_bool[])
             
         }
     }
-    for (size_t i = 0; i <= MAXIMUM_ITEMS; i++)
-    {
-        for (size_t j = 0; j <= MAXIMUM_WEIGHT; j++)
-        {
-            printf("%d ", matrix[i][j]);
-        }
-        printf("\n");
-    }
+    
     int maxInd = 0;
     int max = 0;
     for (size_t i = 0; i < MAXIMUM_WEIGHT + 1; i++) // traceing back to find the selected items
