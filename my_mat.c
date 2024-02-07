@@ -5,7 +5,7 @@
 #include "my_mat.h"
 
 int distancesMatrix[MATRIX_SIZE][MATRIX_SIZE] = {0};
-int paths[MATRIX_SIZE][MATRIX_SIZE] = {0}; //to check if we need to print the path or only the cost
+// int paths[MATRIX_SIZE][MATRIX_SIZE] = {0}; only if actual path is needed
 void floydWarshall(int matrix[MATRIX_SIZE][MATRIX_SIZE]);
 
 
@@ -29,7 +29,7 @@ void doesPathExist(int i, int j) {
 void shortestPath(int i, int j) {
     if (distancesMatrix[i][j] != 0&&distancesMatrix[i][j]!=INF) {
         printf("%d\n", distancesMatrix[i][j]);
-//        while (i != j) {
+//        while (i != j) {     only if actual path is needed
 //            printf("%d --> ", i);
 //            i = paths[i][j];
 //        }
@@ -56,10 +56,10 @@ void floydWarshall(int matrix[MATRIX_SIZE][MATRIX_SIZE]) {
             else {
                 distancesMatrix[i][j] = matrix[i][j];
             }
-            if (matrix[i][j] != 0 && i != j) //to check if we need to print the path or only the cost
-                paths[i][j] = j;
-            else
-                paths[i][j] = -1;//to check if we need to print the path or only the cost
+            // if (matrix[i][j] != 0 && i != j) only if actual path is needed
+            //     paths[i][j] = j;
+            // else
+            //     paths[i][j] = -1; only if actual path is needed
         }
     }
 
@@ -69,7 +69,7 @@ void floydWarshall(int matrix[MATRIX_SIZE][MATRIX_SIZE]) {
             for (int j = 0; j < MATRIX_SIZE; j++) {
                   if (distancesMatrix[i][k]!=INF&&distancesMatrix[k][j]!=INF&& distancesMatrix[i][k]+distancesMatrix[k][j] <distancesMatrix[i][j]) {
                     distancesMatrix[i][j] = distancesMatrix[i][k] + distancesMatrix[k][j];
-                    paths[i][j] = paths[i][k]; //to check if we need to print the path or only the cost
+                    // paths[i][j] = paths[i][k]; if actual path is needed
                 }
             }
         }

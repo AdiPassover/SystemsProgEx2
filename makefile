@@ -13,7 +13,7 @@ my_Knapsack: my_Knapsack.o
 	$(CC) $(CFL) $^ -o $@
 
 my_knapsack.o: my_Knapsack.c
-	$(CC) %(CFL) -c $<
+	$(CC) $(CFL) -c $<
 
 my_graph.o:my_graph.c my_mat.h
 	$(CC) $(CFL) -c $<
